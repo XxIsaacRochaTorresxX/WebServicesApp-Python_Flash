@@ -1,0 +1,62 @@
+
+// Consulta que No sea cero
+// operador $ne  Not Equal
+// { productoDescuento:{$ne:0}}
+
+// Mostrar los productos que tienen algun descuento
+use('vinos_jiquilpan');
+db.productos.find({ productoDescuento:{$ne:0}});
+
+//Poner a todos los productos con descuento CERO
+use('vinos_jiquilpan');
+db.productos.updateMany({},{$set:{'productoDescuento':0}});
+
+//Poner a todos los productos productoTipo a UNO
+use('vinos_jiquilpan');
+db.productos.updateMany({},{$set:{'productoTipo':1}});
+
+// Consultar todos los productos
+use('vinos_jiquilpan');
+db.productos.find({"idCategoria.idCategoria": 500});
+
+// Poner algunos productos en descuento TEQUILA
+// {'productoDescuento':10, "productoTipo": 3}
+use('vinos_jiquilpan');
+db.productos.updateMany({"idProducto": 1150},
+{$set:{'productoDescuento':10, "productoTipo": 3}});
+
+// Poner algunos productos en descuento WHISKEY
+// {'productoDescuento':10, "productoTipo": 3}
+use('vinos_jiquilpan');
+db.productos.updateMany({"idProducto": 600},
+{$set:{'productoDescuento':15, "productoTipo": 3}});
+
+
+// Poner algunos productos como más vendido TEQUILA
+// {"productoTipo": 2}
+use('vinos_jiquilpan');
+db.productos.updateMany({"idProducto": 1050},
+{$set:{"productoTipo": 2}});
+
+// Poner algunos productos como más vendido BRANDY
+// {"productoTipo": 2}
+use('vinos_jiquilpan');
+db.productos.updateMany({"idProducto": 150},
+{$set:{"productoTipo": 2}});
+
+// Poner algunos productos como más vendido GINEBRA
+// {"productoTipo": 2}
+use('vinos_jiquilpan');
+db.productos.updateMany({"idProducto": 600},
+{$set:{"productoTipo": 2}});
+
+// Poner algunos productos como nuevo VODKA
+// {"productoTipo": 4}
+use('vinos_jiquilpan');
+db.productos.updateMany({"idProducto": 1300},
+{$set:{"productoTipo": 4}});
+
+
+// Conaultar TODOS los productos diferentes de 1
+use('vinos_jiquilpan');
+db.productos.find({ productoTipo:{$ne:1}});

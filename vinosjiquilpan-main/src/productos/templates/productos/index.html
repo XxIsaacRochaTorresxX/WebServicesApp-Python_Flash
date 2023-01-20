@@ -1,0 +1,130 @@
+{% extends 'plantilla.html' %}
+
+
+{% block productosGenerales %}
+<section class="ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="row mb-4">
+                        <div class="col-md-12 d-flex justify-content-between align-items-center">
+                            <h4 class="product-select">Selecciona Productos</h4>
+                            <select class="selectpicker" multiple>
+                                {% for categoria in categorias: %}
+					                <option value="{{categoria.idCategoria}}">{{categoria.nombreCategoria}}</option>
+				                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row" id="lista-productos">
+                        {% for producto in productos: %}
+                            <div class="col-md-4 d-flex">
+                                <div class="product ftco-animate mi-producto">
+                                    <div class="img d-flex align-items-center justify-content-center" style="background-image: url(../static/img/productos/{{ producto.productoImagen }});">
+                                        <div class="desc">
+                                            <p class="meta-prod d-flex">
+                                                <a href="#" class="d-flex align-items-center justify-content-center agregar-carrito" data-id="{{producto.idProducto}}" ><span class="flaticon-shopping-bag"></span></a>
+                                               <!--  <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a> Carrito -->
+                                                <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a> <!-- deseo -->
+                                                <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a> <!-- Producto-Ver -->
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="text text-center info-producto">
+                                        {% if producto.productoTipo == 2 %}
+                                            <span class="seller">Más Vendido</span> <!-- Rebaja -->
+                                        {% endif %}
+
+                                        {% if producto.productoTipo == 3 %}
+                                            <span class="sale">Rebaja</span> <!-- Rebaja -->
+                                        {% endif %}
+
+                                        {% if producto.productoTipo == 4 %}
+                                            <span class="new">Nuevo</span> <!-- Rebaja -->
+                                        {% endif %}
+
+                                        <span class="category">{{ producto.nombreCategoria }}</span><!--  Categoria -->
+                                        <h2>{{ producto.productoNombreCorto }}</h2> <!-- Nombre del vino -->
+                                        <p class="mb-0">
+                                            {% if producto.productoTipo == 3 %}
+                                                <span class="price price-sale">$ {{ "{:.2f}".format(producto.precioVenta) }}</span>
+                                            {% endif %}
+                                            <span class="price precio-producto">$ {{ "{:.2f}".format(producto.precioVenta - producto.descuento) }}</span>
+                                        </p> <!-- Precio de Oferta y precio Final -->
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="row mt-5">
+                        <div class="col text-center">
+                            <div class="block-27">
+<!--                                <ul>-->
+<!--                                    <li><a href="#">&lt;</a></li>-->
+<!--                                    <li class="active"><span>1</span></li>-->
+<!--                                    <li><a href="#">2</a></li>-->
+<!--                                    <li><a href="#">3</a></li>-->
+<!--                                    <li><a href="#">4</a></li>-->
+<!--                                    <li><a href="#">5</a></li>-->
+<!--                                    <li><a href="#">&gt;</a></li>-->
+<!--                                </ul>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="sidebar-box ftco-animate">
+                        <div class="categories">
+                            <h3>Product Types</h3>
+                            <ul class="p-0">
+                                {% for categoria in categorias: %}
+					                <li><a href="?idCategoria={{categoria.idCategoria}}">{{categoria.nombreCategoria}} <span class="fa fa-chevron-right"></span></a></li>
+				                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-box ftco-animate">
+                        <h3>Recent Blog</h3>
+                        <div class="block-21 mb-4 d-flex">
+                            <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
+                            <div class="text">
+                                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+                                <div class="meta">
+                                    <div><a href="#"><span class="fa fa-calendar"></span> Apr. 18, 2020</a></div>
+                                    <div><a href="#"><span class="fa fa-comment"></span> 19</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block-21 mb-4 d-flex">
+                            <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
+                            <div class="text">
+                                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+                                <div class="meta">
+                                    <div><a href="#"><span class="fa fa-calendar"></span> Apr. 18, 2020</a></div>
+                                    <div><a href="#"><span class="fa fa-comment"></span> 19</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block-21 mb-4 d-flex">
+                            <a class="blog-img mr-4" style="background-image: url(images/image_3.jpg);"></a>
+                            <div class="text">
+                                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+                                <div class="meta">
+                                    <div><a href="#"><span class="fa fa-calendar"></span> Apr. 18, 2020</a></div>
+                                    <div><a href="#"><span class="fa fa-comment"></span> 19</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block misEscripts %}
+    <script src="{{url_for('static', filename='js/js/app.js')}}"></script>
+{% endblock %}

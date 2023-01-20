@@ -1,0 +1,93 @@
+{% extends "plantilla.html" %}
+
+{% block slogan %}
+<div class="row no-gutters slider-text align-items-center justify-content-center">
+    <div class="col-md-9 ftco-animate mb-5 text-center">
+        <p class="breadcrumbs mb-0"><span class="mr-2"><a href="{{url_for('index')}}">Inicio <i class="fa fa-chevron-right"></i></a></span> <span>Inicio de sesión <i class="fa fa-chevron-right"></i></span></p>
+      <h2 class="mb-0 bread" style="color: #fff;">Inicio de sesión</h2>
+    </div>
+</div>
+{% endblock %}
+
+{% block login %}
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-md-7">
+                <div class="contact-wrap w-100 p-md-5 p-4">
+                    <h3 class="mb-4 center">Login de usuario</h3>
+                    <!-- nombre, correo, clave, telefonocelular -->
+                    <form method="POST"  action="/clientes/login" id="loginForm" name="loginForm" class="loginForm">
+                    <div class="row">
+
+                        <div class="col-md-12"> 
+                            <div class="form-group">
+                                <label class="label" for="correo">Correo electrónico</label>
+                                <input type="email" class="form-control" name="correo" id="correo" placeholder="Correo" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="label" for="clave">Contraseña</label>
+                                <input type="password" class="form-control" name="clave" id="clave" placeholder="Contraseña" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="checkbox"  name="terminoCondiciones" id="terminoCondiciones" style="padding: 6px;" required>
+                                <label class="label" for="terminosCondiciones">
+                                    <a href="#">Acepto términos y condiciones</a>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+<!--                                <input type="checkbox"  name="terminoCondiciones" id="terminoCondiciones" style="padding: 6px;" required>-->
+                                <label class="label" for="crearCuenta">
+                                    <a href="/clientes/registrar">Crear cuenta</a>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 align-items-center">
+                            <div class="form-group">
+                                <input type="button" value="Aceptar" class="btn btn-primary" id="validar-usuario">
+                                <div class="submitting"></div>
+                            </div>
+                        </div>
+
+                        {% block mensajeLogin %}
+                            <div class="col-md-12" id="mensaje">
+                                {% for message in get_flashed_messages() %}
+                                    <div class="alert alert-warning">
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {# % block page_content %}{% endblock % #}
+                            </div>
+                        {% endblock %}
+
+                        <!-- <div class="col-md-12" id="mensaje">
+                
+                        </div> -->
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-5 order-md-first d-flex align-items-stretch">
+                <div  style="background-image: url(../static/img/imgLogin.jpg);  background-size: cover; width: 100%;" ></div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</section>
+
+{% endblock %}
+{% block misEscripts %}
+    <script src="{{url_for('static', filename='js/js/appValidar.js')}}"></script>
+{% endblock %}

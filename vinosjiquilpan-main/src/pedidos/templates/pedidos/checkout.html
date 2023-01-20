@@ -1,0 +1,205 @@
+{% extends "plantilla.html" %}
+
+{% block slogan %}
+<div class="row no-gutters slider-text align-items-center justify-content-center">
+    <div class="col-md-9 ftco-animate mb-5 text-center">
+        <p class="breadcrumbs mb-0"><span class="mr-2"><a href="{{url_for('index')}}">Inicio <i class="fa fa-chevron-right"></i></a></span> <span>Checkout <i class="fa fa-chevron-right"></i></span></p>
+      <h2 class="mb-0 bread" style="color: #fff;">Revisar cuenta</h2>
+    </div>
+</div>
+{% endblock %}
+
+{% block caja %}
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+      <div class="col-xl-10 ftco-animate">
+                    <form action="#" class="billing-form">
+                        <h3 class="mb-4 billing-heading">Detalle de facturación</h3>
+              <div class="row align-items-end">
+                  <div class="col-md-6">
+                <div class="form-group">
+                    <label for="firstname">Nombre</label>
+                  
+                  {% if datosUsuario.nombre != None %}
+                    <input type="text" class="form-control" placeholder="Nombre" id="nombre" value="{{datosUsuario.nombre}}">
+                   {% else %}
+                   <input type="text" class="form-control" placeholder="Nombre" id="nombre">
+                  {% endif %}
+                  
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label for="lastname">Apellidos</label>
+                  
+                  {% if datosUsuario.apellidos != None %}
+                  <input type="text" class="form-control" placeholder="Apellido Paterno Apellido Materno" id="apellidos" value="{{datosUsuario.apellidos}}">
+                  {% else %}
+                  <input type="text" class="form-control" placeholder="Apellido Paterno Apellido Materno" id="apellidos">
+                  {% endif %}
+                 
+                </div>
+            </div>
+            <div class="w-100"></div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="country">Estado</label>
+                        <div class="select-wrap">
+                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                      <select name="estado" id="estado" class="form-control">
+                          <option value="Michoacán">Michoacán</option>
+                        <option value="Jalisco">Jalisco</option>
+                        <option value="Guanajuato">Guanajuato</option>
+                        <option value="San Luis Potosí">San Luis Potosí</option>
+                        <option value="México">México</option>
+                        <option value="Ciudad de México">Ciudad de México</option>
+                      </select>
+                    </div>
+                    </div>
+                </div>
+                <div class="w-100"></div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                    <label for="streetaddress">Dirección</label>
+                  
+                  {% if datosUsuario.direccion != None %}
+                    <input type="text" class="form-control" placeholder="Calle Número, Colonia, Ciudad, Estado" id="direccion" value="{{datosUsuario.direccion}}">
+                  {% else %}
+                     <input type="text" class="form-control" placeholder="Calle Número, Colonia, Ciudad, Estado" id="direccion">
+                  {% endif %}
+                  
+                </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Entre que calles">
+                </div>
+                </div>
+                <div class="w-100"></div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                    <label for="towncity">Ciudad</label>
+                  
+                  {% if datosUsuario.ciudad != None %}
+                    <input type="text" class="form-control" placeholder="Ciudad" id="ciudad" value="{{datosUsuario.ciudad}}">
+                  {% else %} 
+                    <input type="text" class="form-control" placeholder="Ciudad" id="ciudad">
+                  {% endif %}
+                  
+                </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="postcodezip">Código Postal</label>
+                  
+                  {% if datosUsuario.codigopostal != None %}
+                    <input type="text" class="form-control" placeholder="Código postal" id="codigo-postal" value="{{datosUsuario.codigopostal}}">
+                  {% else %}
+                    <input type="text" class="form-control" placeholder="Código postal" id="codigo-postal">
+                  {% endif %}
+                  
+                </div>
+                </div>
+                <div class="w-100"></div>
+                <div class="col-md-6">
+                <div class="form-group">
+                    <label for="phone">Teléfono</label>
+                  
+                  {% if datosUsuario.telefonoCasa != None %}
+                     <input type="text" class="form-control" placeholder="Teléfono" id="telefono" value="{{datosUsuario.telefonoCasa}}">
+                  {% else %}
+                    <input type="text" class="form-control" placeholder="Teléfono" id="telefono">
+                  {% endif %}
+                  
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label for="emailaddress">Correo Electrónico</label>
+                 
+                  {% if datosUsuario.correo != None %}
+                    <input type="text" class="form-control" placeholder="Correo electrónico" id="correo-electronico" value="{{datosUsuario.correo}}" readonly>
+                  {% else %}
+                    <input type="text" class="form-control" placeholder="Correo electrónico" id="correo-electronico" readonly>
+                  {% endif %}
+                  
+                </div>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-md-12">
+                <div class="form-group mt-4">
+                    <!-- Si desea considerar otras opciones -->
+                </div>
+            </div>
+            </div>
+          </form><!-- END -->
+
+
+
+          <div class="row mt-5 pt-3 d-flex">
+              <div class="col-md-6 d-flex">
+                  <div class="cart-detail cart-total p-3 p-md-4">
+                      <h3 class="billing-heading mb-4">Total del carrito</h3>
+                      <p class="d-flex">
+                                <span >Subtotal</span>
+                                <span id="subtotal-orden">$0.00</span>
+                            </p>
+                            <p class="d-flex">
+                                <span>Envio</span>
+                                <span id="total-envio">$0.00</span>
+                            </p>
+                            <p class="d-flex">
+                                <span>Descuento</span>
+                                <span>$0.00</span>
+                            </p>
+                            <hr>
+                            <p class="d-flex total-price">
+                                <span>Total</span>
+                                <span id="total-orden">$0.00</span>
+                            </p>
+                            </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="cart-detail p-3 p-md-4">
+                      <h3 class="billing-heading mb-4">Método de pago</h3>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="radio">
+                                           <label><input type="radio" name="optradio" class="mr-2" id="transferencia"> Transferencia bancaria</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="radio">
+                                           <label><input type="radio" name="optradio" class="mr-2" id="oxxo"> OXXO </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="radio">
+                                           <label><input type="radio" name="optradio" class="mr-2" id="paypal"> Paypal</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="checkbox">
+                                           <label><input type="checkbox" value="" class="mr-2" id="terminosyCondiciones"> He leido y entendido los términos y condiciones y los acepto</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p><a href="#"class="btn btn-primary py-3 px-4 realizar-pedido">Realizar el pedido</a></p>
+                            </div>
+              </div>
+          </div>
+      </div> <!-- .col-md-8 -->
+    </div>
+    </div>
+</section>
+{% endblock %}
+{% block misEscripts %}
+    <script src="{{url_for('static', filename='js/js/appCheckout.js')}}"></script>
+{% endblock %}
